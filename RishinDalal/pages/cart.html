@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - The Jersey Adda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <script src="../js/navbar.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+</head>
+<body>
+    <header class="page-header">
+        <h1>Your <span class="highlight">Cart</span></h1>
+    </header>
+    <main class="cart-main">
+        <div class="cart-container">
+            <div class="cart-left">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-table-body">
+                        <!-- Populated by cart.js -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart-right">
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="cart-final-total" class="highlight-total">$0.00</span>
+                    </div>
+                    <button class="btn checkout-btn" onclick="window.location.href='./checkout.html'">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

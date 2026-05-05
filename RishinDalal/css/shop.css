@@ -1,0 +1,59 @@
+/* Shop Page Styles */
+.page-header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    background-color: var(--bg-color, #0d0d0d);
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.page-header .highlight {
+    color: var(--accent-color, #fca311);
+}
+
+.shop-main {
+    padding: 0 5% 5rem;
+    background-color: var(--bg-color, #0d0d0d);
+    min-height: 60vh;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    position: relative;
+}
+
+.shop-search {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color, #fff);
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.shop-search:focus {
+    border-color: var(--accent-color, #fca311);
+    box-shadow: 0 0 15px rgba(252, 163, 17, 0.2);
+}
+
+.shop-search::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 3rem;
+}
