@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoefy - Product Detail</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/product.css">
+</head>
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+    <main id="content">
+        <div id="product-detail-container" class="product-detail-layout">
+            <!-- Rendered via JS -->
+        </div>
+    </main>
+    <footer id="footer">
+        <div id="logo">Shoefy</div>
+        <div>All rights reserved</div>
+    </footer>
+    <script src="../js/api.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/product_grid.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = parseInt(params.get('id'));
+            const container = document.getElementById('product-detail-container');
+            
+            if (!productId) {
+                container.innerHTML = '<h2>Invalid Product ID.</h2>';
+                return;
+            }
+
+            try {
+                // Fetch the specific product from the database
+                const res = await apiRequest('products', 'GET', { id: productId });
+                const product = res.product;
+                
+                if (product) {
+                    container.innerHTML = `
+                        <div class="detail-image">
+                            <img src="../${product.image_url}" alt="${product.name}">
+                        </div>
+                        <div class="detail-info">
+                            <h2>${product.name}</h2>
+                            <p class="price">$${parseFloat(product.price).toFixed(2)}</p>
+                            <p class="description">${product.description || 'Experience premium comfort and style with the ' + product.name + '.'}</p>
+                            <button class="detail-add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    `;
+                    
+                    const btn = container.querySelector('.detail-add-to-cart-btn');
+                    btn.onclick = async () => {
+                        let currentUser = null;
+                        try {
+                            currentUser = JSON.parse(localStorage.getItem('shoefy_user'));
+                        } catch(e) {}
+
+                        if (!currentUser) {
+                            alert("Please login to add items to your cart.");
+                            window.location.href = './login.html';
+                            return;
+                        }
+
+                        try {
+                            await apiRequest('cart', 'POST', { 
+                                user_id: currentUser.id, 
+                                product_id: product.id, 
+                                quantity: 1 
+                            });
+                            
+                            if (window.updateCartCount) window.updateCartCount();
+                            
+                            const originalText = btn.innerText;
+                            btn.innerText = 'Added!';
+                            btn.style.backgroundColor = '#4CAF50';
+                            setTimeout(() => {
+                                btn.innerText = originalText;
+                                btn.style.backgroundColor = '';
+                            }, 1000);
+                        } catch (err) {
+                            alert(err.message);
+                        }
+                    };
+                } else {
+                    container.innerHTML = '<h2>Product not found.</h2>';
+                }
+            } catch (e) {
+                console.error(e);
+                container.innerHTML = '<h2>Error loading product details.</h2>';
+            }
+        });
+    </script>
+</body>
+</html>

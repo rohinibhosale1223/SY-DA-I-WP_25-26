@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoefy - Home</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/login.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+    <main id="content">
+        <div class="auth-container">
+            <div class="auth-box" id="login-box">
+                <h2>Welcome Back</h2>
+                <p>Login to your Shoefy account</p>
+                <form class="auth-form" onsubmit="event.preventDefault();">
+                    <div class="input-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <button type="button" onclick="toggleAuth('signup')">Sign Up</button></p>
+            </div>
+
+            <div class="auth-box" id="signup-box" style="display: none;">
+                <h2>Create Account</h2>
+                <p>Join the Shoefy community</p>
+                <form class="auth-form" onsubmit="event.preventDefault();">
+                    <div class="input-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+                <p class="auth-switch">Already have an account? <button type="button" onclick="toggleAuth('login')">Login</button></p>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <div id="logo">Shoefy</div>
+        <div>All rights reserved</div>
+    </footer>
+    <script src="../js/api.js"></script>
+    <script src="../js/index.js"></script>
+    <script>
+        function toggleAuth(type) {
+            const loginBox = document.getElementById('login-box');
+            const signupBox = document.getElementById('signup-box');
+            
+            if (type === 'signup') {
+                loginBox.style.display = 'none';
+                signupBox.style.display = 'block';
+            } else {
+                signupBox.style.display = 'none';
+                loginBox.style.display = 'block';
+            }
+        }
+
+        async function handleLogin() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            try {
+                const res = await apiRequest('login', 'POST', { email, password });
+                localStorage.setItem('shoefy_user', JSON.stringify(res.user));
+                window.location.href = '../index.html';
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+
+        async function handleSignup() {
+            const full_name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            try {
+                const res = await apiRequest('signup', 'POST', { full_name, email, password });
+                // auto login or redirect to login. For simplicity, just redirect to login toggle
+                alert('Account created! Please login.');
+                toggleAuth('login');
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+
+        // Attach listeners
+        document.querySelector('#login-box form').onsubmit = (e) => { e.preventDefault(); handleLogin(); };
+        document.querySelector('#signup-box form').onsubmit = (e) => { e.preventDefault(); handleSignup(); };
+    </script>
+</body>
+
+</html>

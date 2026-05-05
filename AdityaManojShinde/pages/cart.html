@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoefy - Home</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/cart.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+    <main id="content">
+        <div class="cart-page-wrapper">
+            <h1 class="cart-title">Your Cart</h1>
+            <div class="cart-layout">
+                <div class="cart-items">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items-container">
+                            <!-- JS generated items -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="cart-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-row">
+                        <span>Total:</span>
+                        <span class="summary-total">$<span id="cart-total-amount">0.00</span></span>
+                    </div>
+                    <button class="checkout-btn" onclick="window.location.href='./checkout.html'">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <div id="logo">Shoefy</div>
+        <div>All rights reserved</div>
+    </footer>
+    <script src="../js/api.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+
+</html>

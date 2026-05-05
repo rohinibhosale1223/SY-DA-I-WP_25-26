@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoefy - Home</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/product.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+    <main id="content">
+        <h1 style="text-align: center; margin-bottom: 1.5rem;">Products</h1>
+        <div class="search-container" style="text-align: center; margin-bottom: 2rem;">
+            <input type="text" id="product-search" placeholder="Search products..." style="padding: 0.8rem 1.5rem; width: 100%; max-width: 400px; border-radius: 50px; border: 1px solid #ccc; font-size: 1rem; outline: none;">
+        </div>
+        <div class="products-grid">
+            <!-- Products will be rendered here by JS -->
+        </div>
+    </main>
+    <footer id="footer">
+        <div id="logo">Shoefy</div>
+        <div>All rights reserved</div>
+    </footer>
+    <script src="../js/api.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/product_grid.js"></script>
+</body>
+
+</html>
