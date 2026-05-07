@@ -1,1 +1,77 @@
+body {
+  font-family: Arial;
+  background: #111;
+  color: white;
+}
 
+header {
+  background: black;
+  padding: 10px;
+}
+
+nav a {
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.game-card {
+  border: 1px solid gray;
+  padding: 10px;
+}
+.games {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.game-card {
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  background: #00ffcc;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00ccaa;
+}
+
+h1 {
+  text-align: center;
+}
+.game-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
