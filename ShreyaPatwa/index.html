@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gaming Xplore</title>
+ <link rel="stylesheet" href="css/style.css">
+</head>
 
+<body>
+
+<header>
+  <h1>Gaming Xplore</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="cart.html">Cart</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Explore the World of Gaming</h2>
+  <p>Discover top games and gear</p>
+</section>
+
+<section class="games">
+  <div class="game-card">
+     <img src="gta5.jpg" alt="gta5">
+    <h3>GTA V</h3>
+    <p>₹1500</p>
+    <button onclick="addToCart('GTA V',1500)">Add to Cart</button>
+  </div>
+
+  <div class="game-card">
+     <img src="cod.jpg" alt="cod">
+    <h3>Call of Duty</h3>
+    <p>₹2000</p>
+    <button onclick="addToCart('COD',2000)">Add to Cart</button>
+  </div>
+</section>
+
+<footer>
+  <p>© Gaming Xplore</p>
+</footer>
+<script src="js/script.js"></script>
+
+</body>
+</html>
